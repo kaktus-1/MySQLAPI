@@ -8,6 +8,8 @@ After it you have to connect first.
 
 ### Connecting
 
+Port is optional.
+
 #### Example
 ```java
 MySQL = new MySQL();
