@@ -22,12 +22,13 @@ public class MySQL {
     private String password;
     private String user;
     private String db;
+    private int port = 3306;
 
     private HikariDataSource dataSource;
 
     public void connect() {
         this.dataSource = new HikariDataSource();
-        this.dataSource.setJdbcUrl("jdbc:mysql://" + host + ":" + 3306 + "/" + db);
+        this.dataSource.setJdbcUrl("jdbc:mysql://" + host + ":" + port + "/" + db);
         this.dataSource.setUsername(this.user);
         this.dataSource.setPassword(this.password);
     }
