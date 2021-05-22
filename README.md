@@ -13,6 +13,8 @@ Import it via Maven.
 After it you have to connect first.
 
 ## Maven
+
+Current version is the latest released tag.
 ```xml
 <dependency>
     <groupId>com.github.xnonymous-n2</groupId>
