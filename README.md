@@ -38,6 +38,7 @@ mySQL.getData("from", "*", "`owner` = `XNonymous`", data -> {
         String owner = (String) object.get("owner");
    }
 });
+mySQL.getData("from", "*", "", data -> {});
 ```
 
 ### Inserting Data
