@@ -7,6 +7,21 @@ Download the latest released Jar.
 Import it to your project.
 After it you have to connect first.
 
+## Maven
+```xml
+<dependency>
+    <groupId>com.github.xnonymous-n2</groupId>
+    <artifactId>mysqlapi</artifactId>
+    <version>VERSION</version>
+</dependency>
+```
+```xml
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository>
+```
+
 ### Connecting
 
 Port is optional.
