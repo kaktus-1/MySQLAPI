@@ -5,6 +5,11 @@
 
 Download the latest released Jar.
 Import it to your project.
+
+OR
+
+Use Maven
+
 After it you have to connect first.
 
 ## Maven
