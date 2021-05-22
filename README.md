@@ -6,9 +6,9 @@
 Download the latest released Jar.
 Import it to your project.
 
-OR
+**OR**
 
-Use Maven
+Import it via Maven.
 
 After it you have to connect first.
 
