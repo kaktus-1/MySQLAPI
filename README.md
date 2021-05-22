@@ -3,6 +3,8 @@
 
 ## Usage
 
+Download the latest released Jar
+
 ### Connecting
 
 #### Example
