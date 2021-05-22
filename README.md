@@ -4,6 +4,7 @@
 ## Usage
 
 Download the latest released Jar.
+Import it to your project.
 After it you have to connect first.
 
 ### Connecting
