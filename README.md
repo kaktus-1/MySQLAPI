@@ -51,6 +51,7 @@ mySQL.getData("from", "*", "`owner` = `XNonymous`", data -> {
    }
 });
 mySQL.getData("from", "*", "", data -> {});
+mySQL.getData("from", "", "", data -> {});
 ```
 
 ### Inserting Data
