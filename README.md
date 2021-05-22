@@ -12,7 +12,7 @@ Port is optional.
 
 #### Example
 ```java
-MySQL = new MySQL();
+MySQL mySQL = new MySQL();
 
 mySQL.setUser(user);
 mySQL.setHost(host);
