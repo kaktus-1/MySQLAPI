@@ -3,7 +3,8 @@
 
 ## Usage
 
-Download the latest released Jar
+Download the latest released Jar.
+After it you have to connect first.
 
 ### Connecting
 
@@ -20,6 +21,8 @@ mySQL.setPort(3306); // default: 3306
 
 ### Creating a table
 
+Creates a table with the default Syntax "CREATE TABLE IF NOT EXISTS".
+
 #### Example
 
 ```java
@@ -29,6 +32,9 @@ mysql.table("`table` (`column1` TEXT NOT NULL, `column2` TEXT NOT NULL)");
 ```
 
 ### Getting Data
+
+Getting data from a MySQL table.
+If you don't need a filter or where just put a empty string or write null.
 
 #### Example
 
@@ -46,6 +52,8 @@ mySQL.getData("from", "*", "", data -> {});
 
 ### Inserting Data
 
+Insert data in a table. 
+
 #### Example
 
 ```java
@@ -55,6 +63,8 @@ mySQL.insertData("table", "`name`, `nameID`", "XNonymous", "#125432");
 ```
 
 ### Deleting Data
+
+Delete data from a table.
 
 #### Example
 
