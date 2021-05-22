@@ -114,8 +114,6 @@ public class MySQL {
                 query.append(" AND ");
         }
 
-        System.out.println(query);
-
         try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(query.toString())) {
 
