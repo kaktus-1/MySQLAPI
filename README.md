@@ -23,6 +23,7 @@ mySQL.setPort(3306); // default: 3306
 ```java
 mysql.table("`table` (`column1` TEXT NOT NULL, `column2` TEXT NOT NULL)");
 // you don't need CREATE TABLE IF NOT EXISTS, because its there default
+// you don't have to use TEXT NOT NULL. But you can use TEXT for everything
 ```
 
 ### Getting Data
@@ -35,8 +36,10 @@ mysql.table("`table` (`column1` TEXT NOT NULL, `column2` TEXT NOT NULL)");
 mySQL.getData("from", "*", "`owner` = `XNonymous`", data -> {
    for (Row object : data.getObjects()) {
         // do whatever you want
+        String owner = (String) object.get("owner");
    }
 });
+mySQL.getData("from", "*", "", data -> {});
 ```
 
 ### Inserting Data
