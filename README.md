@@ -14,7 +14,7 @@ After it you have to connect first.
 
 ## Maven
 
-Current version is the latest released tag.
+Current version is the [latest released](https://github.com/XNonymous-N2/MySQLAPI/releases) tag.
 ```xml
 <dependency>
     <groupId>com.github.xnonymous-n2</groupId>
