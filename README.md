@@ -35,6 +35,7 @@ mysql.table("`table` (`column1` TEXT NOT NULL, `column2` TEXT NOT NULL)");
 mySQL.getData("from", "*", "`owner` = `XNonymous`", data -> {
    for (Row object : data.getObjects()) {
         // do whatever you want
+        String owner = (String) object.get("owner");
    }
 });
 ```
