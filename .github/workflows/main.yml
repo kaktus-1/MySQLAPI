@@ -7,8 +7,8 @@ on:
       - "master"
 
 jobs:
-  pre-release:
-    name: "Pre Release"
+  release:
+    name: "Release"
     runs-on: "ubuntu-latest"
 
     steps:
@@ -21,7 +21,7 @@ jobs:
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
-          prerelease: true
+          prerelease: false
           title: "MySQLAPI, automatic generated"
           files: |
             *.jar
