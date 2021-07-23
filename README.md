@@ -3,14 +3,10 @@
 
 ## Usage
 
-Download the latest released Jar.
-Import it to your project.
-
-**OR**
-
 Import it via Maven.
 
 After it you have to connect first.
+Detailed description you will find below!
 
 ## Maven
 
