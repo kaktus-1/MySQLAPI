@@ -74,7 +74,7 @@ public class MySQL {
      * @throws ArrayIndexOutOfBoundsException when data is smaller then values
      * @throws SQLException see java.sql.SQLException
      */
-    public void insertData(String where, String values, Object... data) {
+    public void insertData(String where, String values, Object... data) throws SQLException {
 
         String query = "INSERT INTO `" + where + "` (" + values + ") VALUES (" + Arrays.stream(data).map(s -> "?").collect(Collectors.joining(", ")) + ")";
 
@@ -86,8 +86,6 @@ public class MySQL {
             }
 
             preparedStatement.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
 
     }
