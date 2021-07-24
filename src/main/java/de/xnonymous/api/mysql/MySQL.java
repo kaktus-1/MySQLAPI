@@ -13,12 +13,17 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 
-/*
+/**
  * This is a MySQL API!
+ * You can find updates on
+ * github!
  *
- * @see com.zaxxer.hikari.HikariDataSource
+ * https://github.com/XNonymous-N2/MySQLAPI/
+ *
+ *
  * @author XNonymous
- */
+ * @see com.zaxxer.hikari.HikariDataSource
+ **/
 
 @Getter
 @Setter
