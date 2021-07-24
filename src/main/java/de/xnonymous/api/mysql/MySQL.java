@@ -6,13 +6,24 @@ import de.xnonymous.api.mysql.utils.Delete;
 import de.xnonymous.api.mysql.utils.Row;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.SneakyThrows;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
+
+
+/**
+ * <b> This is a MySQL API! </b>
+ * <br>
+ * <br> You can find updates on github!
+ * <br> https://github.com/XNonymous-N2/MySQLAPI/
+ * <br>
+ * <br>
+ *
+ * @author XNonymous
+ * @see com.zaxxer.hikari.HikariDataSource
+ */
 
 @Getter
 @Setter
@@ -22,10 +33,23 @@ public class MySQL {
     private String password;
     private String user;
     private String db;
-    private int port = 3306;
+    private int port;
 
     private HikariDataSource dataSource;
 
+    /**
+     * No-argument constructor
+     * <br>
+     * <br> initializes instance variables to null
+     * <br> and default <code>port</code> to 3306
+     */
+    public MySQL() {
+        setPort(3306);
+    }
+
+    /**
+     * Connecting to your MySQL database
+     */
     public void connect() {
         this.dataSource = new HikariDataSource();
         this.dataSource.setJdbcUrl("jdbc:mysql://" + host + ":" + port + "/" + db);
@@ -33,11 +57,23 @@ public class MySQL {
         this.dataSource.setPassword(this.password);
     }
 
+    /**
+     * Disconnecting from you MySQL database
+     */
     public void disconnect() {
         this.dataSource.close();
     }
 
-    public void insertData(String where, String values, Object... data) {
+    /**
+     * Inserting data in a specific table
+     *
+     * @param where  the table where the data gets insert
+     * @param values the values which gets insert
+     * @param data   the data which gets insert
+     * @throws ArrayIndexOutOfBoundsException when data is smaller then values
+     * @throws SQLException                   see java.sql.SQLException
+     */
+    public void insertData(String where, String values, Object... data) throws SQLException {
 
         String query = "INSERT INTO `" + where + "` (" + values + ") VALUES (" + Arrays.stream(data).map(s -> "?").collect(Collectors.joining(", ")) + ")";
 
@@ -49,13 +85,20 @@ public class MySQL {
             }
 
             preparedStatement.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
 
     }
 
-    public void getData(String from, String filter, String where, Consumer<Data> dataConsumer) {
+    /**
+     * Gets data from a MySQL table
+     *
+     * @param from         the table
+     * @param filter       filter what columns he should get
+     * @param where        filter what he should get from the table
+     * @param dataConsumer get the data async
+     * @throws SQLException see java.sql.SQLException
+     */
+    public void getData(String from, String filter, String where, Consumer<Data> dataConsumer) throws SQLException {
         if (filter == null || filter.equals(""))
             filter = "*";
 
@@ -96,16 +139,29 @@ public class MySQL {
             statement.close();
             resultSet.close();
             dataConsumer.accept(data);
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 
-    public void delete(String table, String value, String column) {
+    /**
+     * Delete data from a MySQL table
+     *
+     * @param table  the table
+     * @param value  the value
+     * @param column the column
+     * @throws SQLException see java.sql.SQLException
+     */
+    public void delete(String table, String value, String column) throws SQLException {
         delete(table, Delete.of(value, column));
     }
 
-    public void delete(String table, Delete... deletes) {
+    /**
+     * Delete data from a MySQL table
+     *
+     * @param table   the table
+     * @param deletes value and column in a array
+     * @throws SQLException see java.sql.SQLException
+     */
+    public void delete(String table, Delete... deletes) throws SQLException {
         StringBuilder query = new StringBuilder("DELETE FROM `" + table + "` WHERE ");
 
         for (int i = 0; i < deletes.length; i++) {
@@ -122,19 +178,20 @@ public class MySQL {
             }
 
             ps.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
 
     }
 
-    public void table(String sql) {
+    /**
+     * Create a table with the default syntax
+     * @param sql name of the table and columns
+     * @throws SQLException see java.sql.SQLException
+     */
+    public void table(String sql) throws SQLException {
         String a = "CREATE TABLE IF NOT EXISTS " + sql;
         try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(a)) {
             ps.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 
