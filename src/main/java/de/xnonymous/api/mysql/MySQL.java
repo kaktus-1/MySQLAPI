@@ -90,7 +90,7 @@ public class MySQL {
 
     }
 
-    public void getData(String from, String filter, String where, Consumer<Data> dataConsumer) {
+    public void getData(String from, String filter, String where, Consumer<Data> dataConsumer) throws SQLException {
         if (filter == null || filter.equals(""))
             filter = "*";
 
@@ -131,16 +131,14 @@ public class MySQL {
             statement.close();
             resultSet.close();
             dataConsumer.accept(data);
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 
-    public void delete(String table, String value, String column) {
+    public void delete(String table, String value, String column) throws SQLException {
         delete(table, Delete.of(value, column));
     }
 
-    public void delete(String table, Delete... deletes) {
+    public void delete(String table, Delete... deletes) throws SQLException {
         StringBuilder query = new StringBuilder("DELETE FROM `" + table + "` WHERE ");
 
         for (int i = 0; i < deletes.length; i++) {
@@ -157,19 +155,15 @@ public class MySQL {
             }
 
             ps.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
 
     }
 
-    public void table(String sql) {
+    public void table(String sql) throws SQLException {
         String a = "CREATE TABLE IF NOT EXISTS " + sql;
         try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(a)) {
             ps.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 
