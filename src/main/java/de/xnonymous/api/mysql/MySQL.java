@@ -6,13 +6,19 @@ import de.xnonymous.api.mysql.utils.Delete;
 import de.xnonymous.api.mysql.utils.Row;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.SneakyThrows;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
+
+
+/*
+ * This is a MySQL API!
+ *
+ * @see com.zaxxer.hikari.HikariDataSource
+ * @author XNonymous
+ */
 
 @Getter
 @Setter
