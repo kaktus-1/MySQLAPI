@@ -41,7 +41,7 @@ public class MySQL {
      * No-argument constructor
      * <br>
      * <br> initializes instance variables to null
-     * <br> and default port to 3306
+     * <br> and default <code>port</code> to 3306
      */
     public MySQL() {
         setPort(3306);
@@ -67,12 +67,11 @@ public class MySQL {
     /**
      * Inserting data in a specific table
      *
-     *
-     * @param where the table where the data gets insert
+     * @param where  the table where the data gets insert
      * @param values the values which gets insert
-     * @param data the data which gets insert
+     * @param data   the data which gets insert
      * @throws ArrayIndexOutOfBoundsException when data is smaller then values
-     * @throws SQLException see java.sql.SQLException
+     * @throws SQLException                   see java.sql.SQLException
      */
     public void insertData(String where, String values, Object... data) throws SQLException {
 
@@ -90,6 +89,15 @@ public class MySQL {
 
     }
 
+    /**
+     * Gets data from a MySQL table
+     *
+     * @param from         the table
+     * @param filter       filter what columns he should get
+     * @param where        filter what he should get from the table
+     * @param dataConsumer get the data async
+     * @throws SQLException see java.sql.SQLException
+     */
     public void getData(String from, String filter, String where, Consumer<Data> dataConsumer) throws SQLException {
         if (filter == null || filter.equals(""))
             filter = "*";
@@ -134,10 +142,25 @@ public class MySQL {
         }
     }
 
+    /**
+     * Delete data from a MySQL table
+     *
+     * @param table  the table
+     * @param value  the value
+     * @param column the column
+     * @throws SQLException see java.sql.SQLException
+     */
     public void delete(String table, String value, String column) throws SQLException {
         delete(table, Delete.of(value, column));
     }
 
+    /**
+     * Delete data from a MySQL table
+     *
+     * @param table   the table
+     * @param deletes value and column in a array
+     * @throws SQLException see java.sql.SQLException
+     */
     public void delete(String table, Delete... deletes) throws SQLException {
         StringBuilder query = new StringBuilder("DELETE FROM `" + table + "` WHERE ");
 
@@ -159,6 +182,11 @@ public class MySQL {
 
     }
 
+    /**
+     * Create a table with the default syntax
+     * @param sql name of the table and columns
+     * @throws SQLException see java.sql.SQLException
+     */
     public void table(String sql) throws SQLException {
         String a = "CREATE TABLE IF NOT EXISTS " + sql;
         try (Connection connection = dataSource.getConnection();
