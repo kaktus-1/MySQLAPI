@@ -14,16 +14,18 @@ import java.util.stream.Collectors;
 
 
 /**
- * This is a MySQL API!
- * You can find updates on
- * github!
- *
+ * <b> This is a MySQL API! </b>
+ * <br>
+ * <br>
+ * You can find updates on github!
+ * <br>
  * https://github.com/XNonymous-N2/MySQLAPI/
- *
+ * <br>
+ * <br>
  *
  * @author XNonymous
  * @see com.zaxxer.hikari.HikariDataSource
- **/
+ */
 
 @Getter
 @Setter
