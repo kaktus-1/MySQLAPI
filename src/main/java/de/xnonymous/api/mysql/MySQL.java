@@ -16,10 +16,8 @@ import java.util.stream.Collectors;
 /**
  * <b> This is a MySQL API! </b>
  * <br>
- * <br>
- * You can find updates on github!
- * <br>
- * https://github.com/XNonymous-N2/MySQLAPI/
+ * <br> You can find updates on github!
+ * <br> https://github.com/XNonymous-N2/MySQLAPI/
  * <br>
  * <br>
  *
@@ -39,10 +37,19 @@ public class MySQL {
 
     private HikariDataSource dataSource;
 
+    /**
+     * No-argument constructor
+     * <br>
+     * <br> initializes instance variables to null
+     * <br> and default port to 3306
+     */
     public MySQL() {
         setPort(3306);
     }
 
+    /**
+     * Connecting to your MySQL database
+     */
     public void connect() {
         this.dataSource = new HikariDataSource();
         this.dataSource.setJdbcUrl("jdbc:mysql://" + host + ":" + port + "/" + db);
@@ -50,10 +57,23 @@ public class MySQL {
         this.dataSource.setPassword(this.password);
     }
 
+    /**
+     * Disconnecting from you MySQL database
+     */
     public void disconnect() {
         this.dataSource.close();
     }
 
+    /**
+     * Inserting data in a specific table
+     *
+     *
+     * @param where the table where the data gets insert
+     * @param values the values which gets insert
+     * @param data the data which gets insert
+     * @throws ArrayIndexOutOfBoundsException when data is smaller then values
+     * @throws SQLException see java.sql.SQLException
+     */
     public void insertData(String where, String values, Object... data) {
 
         String query = "INSERT INTO `" + where + "` (" + values + ") VALUES (" + Arrays.stream(data).map(s -> "?").collect(Collectors.joining(", ")) + ")";
