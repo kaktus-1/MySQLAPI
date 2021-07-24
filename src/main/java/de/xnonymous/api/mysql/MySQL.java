@@ -35,9 +35,13 @@ public class MySQL {
     private String password;
     private String user;
     private String db;
-    private int port = 3306;
+    private int port;
 
     private HikariDataSource dataSource;
+
+    public MySQL() {
+        setPort(3306);
+    }
 
     public void connect() {
         this.dataSource = new HikariDataSource();
