@@ -24,3 +24,4 @@ jobs:
           title: "MySQLAPI, automatic generated"
           files: |
             *.jar
+        id: automatic_releases
