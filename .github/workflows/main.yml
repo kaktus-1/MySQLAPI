@@ -22,7 +22,7 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           title: "MySQLAPI"
-          automatic_release_tag: "latest"
+          automatic_release_tag: "v2"
           files: |
             *.jar
         id: automatic_releases
