@@ -10,7 +10,7 @@ Detailed description you will find below!
 
 ## Maven
 
-Current version is the [latest released](https://github.com/XNonymous-N2/MySQLAPI/releases) tag.
+Current version is [![](https://jitpack.io/v/XNonymous-N2/MySQLAPI.svg)](https://jitpack.io/#XNonymous-N2/MySQLAPI)
 ```xml
 <dependency>
     <groupId>com.github.xnonymous-n2</groupId>
