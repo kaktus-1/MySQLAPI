@@ -23,7 +23,7 @@ jobs:
       uses: actions/setup-java@v2
       with:
          distribution: 'adopt'
-         java-version: 17
+         java-version: 18
     - name: Compile the Project
       run: mvn -B compile
     - name: Extract Maven project version
@@ -39,11 +39,11 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
-    - name: Set up JDK 17
+    - name: Set up JDK 18
       uses: actions/setup-java@v2
       with:
           distribution: 'adopt'
-          java-version: '17'
+          java-version: '18'
     - name: Build and test project
       run: mvn -B verify
     - name: files
