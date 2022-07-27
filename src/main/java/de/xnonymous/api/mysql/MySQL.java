@@ -184,6 +184,7 @@ public class MySQL {
 
     /**
      * Create a table with the default syntax
+     *
      * @param sql name of the table and columns
      * @throws SQLException see java.sql.SQLException
      */
